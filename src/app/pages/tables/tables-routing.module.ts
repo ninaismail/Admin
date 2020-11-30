@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { TablesComponent } from './tables.component';
 import { SmartTableComponent } from './smart-table/smart-table.component';
 import { StudentsTableComponent } from './students-table/students-table.component';
+import { TeachersTableComponent } from './teachers-table/teachers-table.component';
+import { ClassesTableComponent } from './classes-table/classes-table.component';
 import { TreeGridComponent } from './tree-grid/tree-grid.component';
 
 const routes: Routes = [{
@@ -17,6 +19,14 @@ const routes: Routes = [{
     {
       path: 'students-table',
       component: StudentsTableComponent,
+    },
+    {
+      path: 'teachers-table',
+      component: TeachersTableComponent,
+    },
+    {
+      path: 'classes-table',
+      component: ClassesTableComponent,
     },
     {
       path: 'tree-grid',
@@ -35,5 +45,7 @@ export const routedComponents = [
   TablesComponent,
   SmartTableComponent,
   StudentsTableComponent,
+  TeachersTableComponent,
+  ClassesTableComponent,
   TreeGridComponent,
 ];

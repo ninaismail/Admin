@@ -211,6 +211,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/tables/students-table',
       },
       {
+        title: 'Teachers Table',
+        link: '/pages/tables/teachers-table',
+      },
+      {
+        title: 'Classes Table',
+        link: '/pages/tables/classes-table',
+      },
+      {
         title: 'Tree Grid',
         link: '/pages/tables/tree-grid',
       },

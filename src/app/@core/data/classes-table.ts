@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export abstract class StudentsTableData {
-  url="http://localhost:3000/students";
+export abstract class ClassesTableData {
+  url="http://localhost:3002/classes";
 
   constructor(private http: HttpClient) {  }
   //abstract dataChange = new Subject<any>();
@@ -14,27 +14,21 @@ export abstract class StudentsTableData {
     return this.http.get(this.url);
   }
  
-  addStudent(newData):Observable<any[0]>{
+  addClass(newData):Observable<any[0]>{
     console.log(newData);
     return this.http.post(this.url, newData);
   }
 
-  editStudent(newData):Observable<any [0]>{
+  editClass(newData):Observable<any [0]>{
     console.log(newData);
-    /*let httpParams= new HttpParams().set('id', newData._id);
-    let options= {params: httpParams};*/
     let id = newData._id;
     return this.http.put(`${this.url}/${id}`, newData);
   }
 
-  deleteStudent(data){
+  deleteClass(data){
   console.log(data);
- /*let httpParams= new HttpParams().set('id', data._id);
-    let options= {params: httpParams};
-    return this.http.delete(this.url, options);;*/
     let id = data._id;
     return this.http.delete(`${this.url}/${id}`);
   }
-  //<any[]>sss
 }
   

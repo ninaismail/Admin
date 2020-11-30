@@ -8,7 +8,6 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
-
 export const routes: Routes = [
   {
     path: 'pages',
@@ -19,7 +18,7 @@ export const routes: Routes = [
     path: 'auth',
     component: NbAuthComponent,
     children: [
-      {
+   {
         path: '',
         component: NbLoginComponent,
       },

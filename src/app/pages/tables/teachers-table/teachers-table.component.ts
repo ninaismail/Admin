@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
 
-import { StudentsTableData } from 'app/@core/data/students-table';
+import { TeachersTableData } from 'app/@core/data/teachers-table';
 
 @Component({
   selector: 'ngx-smart-table',
-  templateUrl: './students-table.component.html',
-  styleUrls: ['./students-table.component.scss'],
+  templateUrl: './teachers-table.component.html',
+  styleUrls: ['./teachers-table.component.scss'],
 })
-export class StudentsTableComponent{
+export class TeachersTableComponent{
 
 
   settings = {
@@ -36,10 +36,6 @@ export class StudentsTableComponent{
      confirmSave: true,
     },
     columns: {
-      /*_id: {
-        title: 'ID',
-        type: 'number',
-      },*/
       FirstName: {
         title: 'First Name',
         type: 'string',
@@ -59,21 +55,21 @@ export class StudentsTableComponent{
       Grade: {
         title: 'Grade',
         type: 'string',
-      },
+      },     
       Section: {
         title: 'Section',
         type: 'string',
       },
-      Age: {
-        title: 'Age',
-        type: 'number',
+      Subject: {
+        title: 'Subject',
+        type: 'string',
       },
     },
   };
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: StudentsTableData) {
+  constructor(private service: TeachersTableData) {
         this.service.getData().subscribe((res) => {
       this.source.load(res.data);
     });
@@ -87,14 +83,14 @@ export class StudentsTableComponent{
       Username: event.newData.Username,
       Email: event.newData.Email,
       Grade: event.newData.Grade,
-      Section: event.newData.Section,
-      Age: event.newData.Age,
+      Section: event.newData.Section,      
+      Subject: event.newData.Subject,
     };
     if (window.confirm('Are you sure you want to add this?')) {
-      this.service.addStudent(rm).subscribe(
+      this.service.addTeacher(rm).subscribe(
         (res) => {
           event.confirm.resolve(event.newData);
-          this.service.addStudent(event.newData);
+          this.service.addTeacher(event.newData);
          this.source.load(event.newData);   
         }
       );
@@ -113,13 +109,13 @@ export class StudentsTableComponent{
       Email: event.newData.Email,
       Grade: event.newData.Grade,
       Section: event.newData.Section,
-      Age: event.newData.Age,
+      Subject: event.newData.Subject,
     };
     if (window.confirm('Are you sure you want to edit this ?')) {
-    this.service.editStudent(rm).subscribe(  
+    this.service.editTeacher(rm).subscribe(  
         (res) => {             
           event.confirm.resolve(event.newData);
-          this.service.editStudent(event.newData);
+          this.service.editTeacher(event.newData);
           this.source.update(event.data, event.newData);         
           }
       );
@@ -131,10 +127,10 @@ export class StudentsTableComponent{
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete this?')) {
-      this.service.deleteStudent(event.data).subscribe(
+      this.service.deleteTeacher(event.data).subscribe(
         (res) => {
           event.confirm.resolve(event.data);
-          this.service.deleteStudent(event.data);
+          this.service.deleteTeacher(event.data);
           this.source.remove(event.data);       
          }
       );
@@ -145,76 +141,4 @@ export class StudentsTableComponent{
   } 
  }
 
-
-/*  onCreateConfirm(event) {
-    event.confirm.resolve();
-    this.service.addStudent(event.newData);
-    this.source.add(event.newData);
-    //this.change.emit();
-  }
-
-  onDeleteConfirm(event) {
-    if (window.confirm("Are you sure you want to delete a Rainmaker??!?!")) {
-      event.confirm.resolve();
-      this.source.remove(event.data);
-      this.service.deleteStudent(event.data);
-    } else {
-      event.confirm.reject();
-    }
-  }
- } 
-  this.service.getData().subscribe(
-      (res) => {
-        this.source.load(res.data);
-      }
-    );
- onCreateConfirm(event) {
-    if (window.confirm('Are you sure you want to save?')) {
-      //call event.newData to remote api, remember that you have to await this
-      event.confirm.resolve();
-      this.service.addStudent(event.student).subscribe(
-        (res) => {
-          this.source.load(res);
-        },
-        (err) => {
-          alert('error');
-        }
-      );
-
-    } else {
-      event.confirm.reject();
-    }
-  }    
-  onEditConfirm(event) {
-    if (window.confirm('Are you sure you want to save?')) {
-      //call to remote api, remember that you have to await this
-      event.confirm.resolve();      
-      this.service.editStudent(event.newData).subscribe(
-        (res) => {
-          this.source.load(res);
-        },
-        (err) => {
-          alert('error');
-        }
-     );      
-    
-    } else {
-      event.confirm.reject();
-    }
-  }    
-  onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();      
-      this.service.deleteStudent(event.data).subscribe(
-        (res) => {
-          this.source.load(res);
-        },
-        (err) => {
-          alert('error');
-        }
-      );
-    } else {
-      event.confirm.reject();
-    }
-  }*/
 
