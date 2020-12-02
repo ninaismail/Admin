@@ -207,6 +207,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/tables/smart-table',
       },
       {
+        title: 'Users Table',
+       link: '/pages/tables/users-table',
+      },
+      {
         title: 'Students Table',
         link: '/pages/tables/students-table',
       },
